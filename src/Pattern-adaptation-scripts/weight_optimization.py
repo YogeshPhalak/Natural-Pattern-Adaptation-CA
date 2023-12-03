@@ -3,8 +3,8 @@ import cv2
 from numba import jit, prange
 from scipy.optimize import minimize
 
-img = cv2.imread("Data/7_processed.jpg")
-filename = "Data/w_.npy"
+img = cv2.imread("data/4_processed.jpg")
+filename = "data/w4.npy"
 c_ = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # c_ = cv2.resize(c_, (256, 256), interpolation=cv2.INTER_NEAREST)
 c_ = cv2.threshold(c_, 127, 1, cv2.THRESH_BINARY)[1]
@@ -42,7 +42,7 @@ def cust_opt(x0):
     x = np.copy(x0)
     cst0 = cst_prev
     it = 1000
-    step = 0.1
+    step = 0.001
     for i in range(it):
         for ix in range(len(x0)):
             x[ix] += step
@@ -66,7 +66,7 @@ def cust_opt(x0):
 
 
 if __name__ == "__main__":
-    # w = np.load("Data/w4.npy")
+    # w = np.load("data/w4.npy")
     # x0 = w.reshape((p * q))
     x0 = np.random.rand(p * q) * 2 - 1
     # x0 = np.ones(p * q)

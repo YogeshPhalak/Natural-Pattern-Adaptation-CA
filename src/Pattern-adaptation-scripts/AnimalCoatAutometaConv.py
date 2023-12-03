@@ -5,36 +5,53 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 
-def w_r(r):
-    if r <= ri:
-        if r <= re:
-            return we
-        else:
-            return wi
-    else:
-        return 0
-
-
-def plot_w(w):
+def plot_w(w_):
+    r = w_.shape[0] // 2
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    x, y = np.meshgrid(np.arange(-ri, ri + 1), np.arange(-ri, ri + 1))
-    ax.plot_surface(x, y, w, cmap='viridis')
+    x, y = np.meshgrid(np.arange(-r, r + 1), np.arange(-r, r + 1))
+    ax.plot_surface(x, y, w_, cmap='viridis')
     plt.show()
 
 
-def weight_matrix():
-    # # random matrix varing from -1 to 1
-    w = np.random.rand(2 * ri + 1, 2 * ri + 1) * 2 - 1
-    # w = w * 4
-    w = np.zeros((2 * ri + 1, 2 * ri + 1))
-    for i in range(-ri, ri + 1):
-        for j in range(-ri, ri + 1):
-            r = (i ** 2 + j ** 2) ** 0.5
-            w[i + ri, j + ri] = w_r(r)
-    w = np.load("Data/w_.npy")
-    # plot_w(w)
+def youngs_weight():
+    def w_r(r_):
+        if r_ <= r:
+            if r_ <= re:
+                return we
+            else:
+                return wi
+        else:
+            return 0
+
+    w = np.zeros((2 * r + 1, 2 * r + 1))
+    for i in range(-r, r + 1):
+        for j in range(-r, r + 1):
+            r0 = (i ** 2 + j ** 2) ** 0.5
+            w[i + r, j + r] = w_r(r0)
     return w
+
+
+def radial_weight():
+    w_r = lambda r: 1.1 * np.exp(-0.1 * r) * np.cos(0.6 * r)
+    w = np.zeros((2 * r + 1, 2 * r + 1))
+    for i in range(-r, r + 1):
+        for j in range(-r, r + 1):
+            w[i + r, j + r] = w_r((i ** 2 + j ** 2) ** 0.5)
+    return w
+
+
+def random_weight(r):
+    w_ = np.random.rand(2 * r + 1, 2 * r + 1) * 2 - 1
+    w_ = w_ * 4
+    return w_
+
+
+def weight_matrix():
+    return random_weight(r)
+    # return radial_weight()
+    # return youngs_weight()
+    # return np.load("data/w8.npy")
 
 
 @jit(nopython=True, parallel=True)
@@ -70,13 +87,15 @@ def update(c_, w_, b_boundary=True):
 if __name__ == "__main__":
     m, n = 512, 512
     c = np.random.randint(0, 2, (m, n))
-    re, ri = 4, 25
+    re, r = 4, 12
     we, wi = 1, -0.1
+    w = np.load("data/w8.npy")
+
     w = weight_matrix()
     while True:
         c = update(c, w, True)
         img = cv2.resize(np.array(c * 255, dtype=np.uint8), (512, 512), interpolation=cv2.INTER_NEAREST)
-        cv2.imshow('YoungsModel', img)
+        cv2.imshow('Cellular Autometa Pattern', img)
         key = cv2.waitKey(1)
         if key == ord('q'):
             break
@@ -92,12 +111,12 @@ if __name__ == "__main__":
             print('wi:', wi)
             w = weight_matrix()
         elif key == 83:
-            ri += 1
-            print('ri:', ri)
+            r += 1
+            print('r:', r)
             w = weight_matrix()
         elif key == 81:
-            ri -= 1
-            print('ri:', ri)
+            r -= 1
+            print('r:', r)
             w = weight_matrix()
         elif key == ord('s'):
             print('saving')
