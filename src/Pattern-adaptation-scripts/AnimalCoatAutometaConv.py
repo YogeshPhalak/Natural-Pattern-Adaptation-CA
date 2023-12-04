@@ -48,10 +48,13 @@ def random_weight(r):
 
 
 def weight_matrix():
-    return random_weight(r)
+    # return random_weight(r)
     # return radial_weight()
     # return youngs_weight()
     # return np.load("data/w8.npy")
+    # return np.load("data/w4.npy")
+    return np.load("data/w7.npy")
+    # return np.load("data/w.npy")
 
 
 @jit(nopython=True, parallel=True)
@@ -86,15 +89,17 @@ def update(c_, w_, b_boundary=True):
 
 if __name__ == "__main__":
     m, n = 512, 512
+    im_w, im_h = 1000, 1000
     c = np.random.randint(0, 2, (m, n))
     re, r = 4, 12
     we, wi = 1, -0.1
-    w = np.load("data/w8.npy")
 
     w = weight_matrix()
+    plot_w(w)
+
     while True:
         c = update(c, w, True)
-        img = cv2.resize(np.array(c * 255, dtype=np.uint8), (512, 512), interpolation=cv2.INTER_NEAREST)
+        img = cv2.resize(np.array(c * 255, dtype=np.uint8), (im_h, im_w), interpolation=cv2.INTER_NEAREST)
         cv2.imshow('Cellular Autometa Pattern', img)
         key = cv2.waitKey(1)
         if key == ord('q'):
