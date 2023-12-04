@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 def plot_w(w_):
     r = w_.shape[0] // 2
-    fig = plt.figure()
+    fig = plt.figure('Weight Matrix')
     ax = fig.add_subplot(111, projection='3d')
     x, y = np.meshgrid(np.arange(-r, r + 1), np.arange(-r, r + 1))
     ax.plot_surface(x, y, w_, cmap='viridis')
@@ -53,8 +53,8 @@ def weight_matrix():
     # return youngs_weight()
     # return np.load("data/w8.npy")
     # return np.load("data/w4.npy")
-    return np.load("data/w7.npy")
-    # return np.load("data/w.npy")
+    # return np.load("data/w7.npy")
+    return np.load("data/w_.npy")
 
 
 @jit(nopython=True, parallel=True)
