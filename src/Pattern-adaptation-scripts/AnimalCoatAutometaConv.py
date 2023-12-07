@@ -51,10 +51,10 @@ def weight_matrix():
     # return random_weight(r)
     # return radial_weight()
     # return youngs_weight()
-    # return np.load("data/w8.npy")
+    return np.load("data/w8.npy")
     # return np.load("data/w4.npy")
     # return np.load("data/w7.npy")
-    return np.load("data/w_.npy")
+    # return np.load("data/w_.npy")
 
 
 @jit(nopython=True, parallel=True)
