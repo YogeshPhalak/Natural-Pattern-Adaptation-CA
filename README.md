@@ -1,330 +1,164 @@
-# Natural-Pattern-Adaptation-CA
-Research on Natural Pattern Adaptation using Cellular Automata Model: A repository for the final project in our MathBio class, exploring the dynamics of natural pattern adaptation through the lens of a cellular automata model. Contains code, documentation, and resources related to the project.
+# Project Title
 
+## Overview
 
-# Cellular Automata Approaches to Biological Modeling: Extensions to biological pattern adaptation
+This project explores Cellular Automata (CA) approaches to biological modeling, focusing on pattern adaptation. The work
+is inspired by the paper titled "Cellular Automata Approaches to Biological Modeling" by G. Bard Ermentrout and Leah
+Edelstein-Keshet. The project includes Python scripts implementing various CA models, each offering insights into
+different aspects of biological phenomena.
 
-# Presented by Yogesh Phalak and Jonathan Zelaya
+## Table of Contents
 
-![](img/Cellular%20Automata%2020.png)
+- [Introduction](#introduction)
+- [Deterministic Automata](#deterministic-automata)
+    - [General Model](#general-model)
+    - [Host-Parasite Model](#host-parasite-model)
+    - [Predator-Prey Model](#predator-prey-model)
+    - [Cellular Automata From More Complex Models](#cellular-automata-from-more-complex-models)
+- [Developmental Biology](#developmental-biology)
+    - [Pattern Adaption for Developmental Biology](#pattern-adaption-for-developmental-biology)
+- [Discussion](#discussion)
+- [Future Directions](#future-directions)
+- [Usage](#usage)
+    - [Prerequisites](#prerequisites)
+    - [Running the Scripts](#running-the-scripts)
+    - [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-# Last time…
+## Introduction
 
-Reaction\-diffusion kinetics
+The paper chosen for study, "Cellular Automat Approaches to Biological Modeling" by G. Bard Ermentrout and Leah
+Edelstein-Keshet, serves as the foundation for this project. The goal is to extend the authors' work by incorporating
+pattern identification using convolution in image processing to understand the mechanism of pattern adaptation.
 
-Coupled set of ODEs
+## Deterministic Automata
 
-Activation parameter
+### General Model
 
-Threshold parameter
+Active media, mimicking biological behaviors, are explored through a simple excitable rule. The model includes
+simulations of square-rotating spiral waves and modifications based on inhibitors or activators, creating diverse
+spatial patterns.
 
-![](img/Cellular%20Automata%2021.gif)
+<p align="center">
+  <img src="img/Petri_Dish.gif" width="400" alt="GIF 1">
+  <img src="img/Spiral_Pattern.gif" width="400" alt="GIF 2">
+</p>
 
-![](img/Cellular%20Automata%2022.png)
+### Host-Parasite Model
 
-![](img/Cellular%20Automata%2023.png)
+A host-parasitoid model is discretized and placed on a grid, resembling an active CA. The system exhibits dynamic
+interactions between host and parasite populations, leading to complex spatial patterns.
 
-# Cellular Automata
+<p align="center">
+  <img src="img/host_parasite1.gif" width="400" alt="GIF 1">
+  <img src="img/host_parasite2.gif" width="400" alt="GIF 2">
+</p>
 
-Reduced\-order model
+### Predator-Prey Model
 
-Discrete Lattices
+A fish-shark predator-prey model is considered, resulting in complex oscillations and spatial patterns. The simulation
+captures the temporal evolution and interactions within the predator-prey system.
 
-Simple rules for lattice state point value
+![praditor_pray.gif](img%2Fpraditor_pray.gif)
 
-__e\.g\. Conway's Game of Life__
+### Cellular Automata From More Complex Models
 
-![](img/Cellular%20Automata%2024.png)
+Translation from continuous to discrete domains is explored, including a reaction-diffusion system and an immunology
+model. These models showcase the versatility of CA in representing complex biological phenomena.
 
-![](img/Cellular%20Automata%2025.gif)
+### Developmental Biology
 
-__Source: Wikipedia__
+A simple model in developmental biology, incorporating lateral inhibition and thresholds, is presented. The model can
+create spatial two-dimensional patterns mimicking animal coat patterns.
 
-# Deterministic Automata
+<p align="center">
+  <img src="img/animal_coat1.png" width="200" alt="GIF 1">
+  <img src="img/animal_coat2.png" width="200" alt="GIF 2">
+  <img src="img/animal_coat3.png" width="200" alt="GIF 3">
+  <img src="img/animal_coat4.png" width="200" alt="GIF 4">
+</p>
 
-![](img/Cellular%20Automata%2026.gif)
+## Pattern Adaption for Developmental Biology
 
-![](img/Cellular%20Automata%2027.gif)
+The weight tensor used in the developmental biology model is analyzed to explore its potential as a convolution kernel.
+The convolution method is applied to identify rules governing specific pattern formations, providing insights into the
+adaptability of biological patterns.
 
-Population
+![MathBioResults.png](img%2FMathBioResults.png)
 
-Immunology
+<p align="center">
+  <img src="img/fprint1.png" width="300" alt="GIF 1">
+  <img src="img/fprint2.png" width="300" alt="GIF 2">
+  <img src="img/fprint3.png" width="300" alt="GIF 3">
+</p>
 
-Developmental\*
+## Discussion
 
-![](img/Cellular%20Automata%2028.png)
+The use of Cellular Automata (CA) models offers a balance between simplicity, interpretability, and computational
+efficiency. While CA models should not replace rigorous mathematical models, they provide a valuable initial step in
+understanding complex biological phenomena.
 
-__Reproduced Results__
+## Future Directions
 
-__Spiral wave pair \(100 x 100 grid\) __
+### Explaining Coat Patterns in an Evolutionary Perspective
 
-__Autumn colormap \{0 \- 5\}__
+Investigating the evolutionary origins of coat patterns by integrating genetic and environmental factors into the
+modeling process.
 
-__The Belousov\-__  __Zhabotinsky__  __ \(BZ\) reaction__
+### Exploring Dynamic Pattern Adaptation
 
-![](img/Cellular%20Automata%2029.png)
+Incorporating temporal dynamics into the convolution process to model how environmental changes and selective pressures
+influence adaptive responses.
 
-# Population Biology | parasites
+### Compressing Large Datasets of Biological Systems
 
-![](img/Cellular%20Automata%20210.gif)
+Utilizing the weight tensor as a convolution kernel to efficiently compress large datasets while preserving salient
+features.
 
-![](img/Cellular%20Automata%20211.gif)
+## Usage
 
-__Host\-parasite model__
+### Prerequisites
 
-9 state model
+Make sure you have the following prerequisites installed on your machine:
 
-0 \- empty cell
+- Python 3
+- Numpy
+- OpenCV (opencv-python)
+- Numba
 
-1 \- mature host
+You can install the required packages using the following command:
 
-\(2\-3\) \- dying host
+```bash
+pip install numpy opencv-python numba
+```
 
-5 \- mature parasite
+### Running the Scripts
 
-\(6\-8\) \- dying parasite
+Each script in the project works independently. To run an example script, use the following command:
 
-__Reproduced Results__
+```bash
+python3 scriptname.py
+```
 
-![](img/Cellular%20Automata%20212.png)
+Replace `scriptname.py` with the actual name of the script you want to run.
+Feel free to explore different scripts and experiment with the provided examples.
 
-__Host\-Parasite Automata \(300 x 300 grid\)  Hot colormap \{A \- I\}__
+## Contributing
 
-![](img/Cellular%20Automata%20213.png)
+Contributions to the project are welcome. If you'd like to contribute, follow these steps:
 
-# Population Biology | sharks and minnows gets mathy
+1. Fork the project
+2. Create a new branch
+3. Make your changes
+4. Submit a pull request
 
-![](img/Cellular%20Automata%20214.gif)
+## License
 
-__Predator\-prey model__
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-8 state model
+## Acknowledgements
 
-0 \- empty cell
-
-1 \- prey
-
-\(2\-6\) stages of shark development
-
-7 \- reproducing shark
-
-Oscillatory behavior
-
-![](img/Cellular%20Automata%20215.png)
-
-![](img/Cellular%20Automata%20216.png)
-
-__Reproduced Results__
-
-![](img/Cellular%20Automata%20217.png)
-
-# Immunology
-
-![](img/Cellular%20Automata%20218.png)
-
-__Shape\-space simulations of the immune system__
-
-Shape \- \{Binding properties of antigens\, antibodies\, receptors\}
-
-16\-state model of ‘B\-cells’
-
-Complementary cell interaction
-
-![](img/Cellular%20Automata%20219.png)
-
-![](img/Cellular%20Automata%20220.png)
-
-__Reproduced Result__
-
-![](img/Cellular%20Automata%20221.png)
-
-![](img/Cellular%20Automata%20222.png)
-
-# Developmental* | Animal Coat Patterns
-
-Young’s Model
-
-2 state model \(0\,1\)
-
-Lateral inhibition
-
-Threshold \- Weight Matrix\, Heaviside function
-
-![](img/Cellular%20Automata%20223.png)
-
-![](img/Cellular%20Automata%20224.png)
-
-![](img/Cellular%20Automata%20225.png)
-
-![](img/Cellular%20Automata%20226.png)
-
-![](img/Cellular%20Automata%20227.png)
-
-# Paper’s result
-
-50 x 50 grid\, 0 \- white\, 1 \- black
-
-![](img/Cellular%20Automata%20228.png)
-
-![](img/Cellular%20Automata%20229.png)
-
-![](img/Cellular%20Automata%20230.png)
-
-![](img/Cellular%20Automata%20231.png)
-
-![](img/Cellular%20Automata%20232.png)
-
-# Our results
-
-![](img/Cellular%20Automata%20233.png)
-
-![](img/Cellular%20Automata%20234.png)
-
-![](img/Cellular%20Automata%20235.png)
-
-![](img/Cellular%20Automata%20236.png)
-
-![](img/Cellular%20Automata%20237.png)
-
-# Extension | Pattern Adaptation
-
-![](img/Cellular%20Automata%20238.png)
-
-__Key Observations: __
-
-Young's Cellular automata algorithm generates infinite patterns based on diverse parameters and initial conditions\.
-
-Distinct but visually similar patterns emerge with varied initial conditions\, characterized by a fixed weight function \(Wij\)\.
-
-__Weight tensor in Young's Model__
-
-![](img/Cellular%20Automata%20239.gif)
-
-__Reinterpretation of the Young's CA as a convolution with a weight tensor\, is analogous to a kernel in image processing\.__
-
-__Is it possible to derive this weight tensor from the patterns observed in nature?__
-
-__Source: Towards Data Science__
-
-# Methodology
-
-![](img/Cellular%20Automata%20240.jpg)
-
-![](img/Cellular%20Automata%20241.jpg)
-
-![](img/Cellular%20Automata%20242.jpg)
-
-![](img/Cellular%20Automata%20243.jpg)
-
-![](img/Cellular%20Automata%20244.jpg)
-
-![](img/Cellular%20Automata%20245.png)
-
-![](img/Cellular%20Automata%20246.gif)
-
-# Free indices parameter
-
-![](img/Cellular%20Automata%20247.png)
-
-![](img/Cellular%20Automata%20248.png)
-
-# Results | Zebra
-
-![](img/Cellular%20Automata%20249.jpg)
-
-![](img/Cellular%20Automata%20250.jpg)
-
-![](img/Cellular%20Automata%20251.jpg)
-
-![](img/Cellular%20Automata%20252.jpg)
-
-![](img/Cellular%20Automata%20253.jpg)
-
-__Weight tensor for Zebra Pattern__
-
-# Results | Leopard
-
-![](img/Cellular%20Automata%20254.jpg)
-
-![](img/Cellular%20Automata%20255.jpg)
-
-![](img/Cellular%20Automata%20256.jpg)
-
-Results | Leopard
-
-![](img/Cellular%20Automata%20257.png)
-
-![](img/Cellular%20Automata%20258.png)
-
-__Weight tensor for Leopard Pattern__
-
-# Results | Tiger
-
-![](img/Cellular%20Automata%20259.jpg)
-
-![](img/Cellular%20Automata%20260.jpg)
-
-![](img/Cellular%20Automata%20261.jpg)
-
-![](img/Cellular%20Automata%20262.jpg)
-
-![](img/Cellular%20Automata%20263.png)
-
-__Weight tensor in Tiger Pattern__
-
-# Radial function parameter
-
-![](img/Cellular%20Automata%20264.png)
-
-![](img/Cellular%20Automata%20265.png)
-
-![](img/Cellular%20Automata%20266.png)
-
-![](img/Cellular%20Automata%20267.png)
-
-![](img/Cellular%20Automata%20268.png)
-
-![](img/Cellular%20Automata%20269.png)
-
-__Radially symmetric Weight tensors __
-
-Results | Fingerprint like patterns
-
-![](img/Cellular%20Automata%20270.png)
-
-![](img/Cellular%20Automata%20271.png)
-
-![](img/Cellular%20Automata%20272.png)
-
-![](img/Cellular%20Automata%20273.png)
-
-![](img/Cellular%20Automata%20274.jpg)
-
-# Future Directions
-
-__Explaining Coat Patterns in an Evolutionary Perspective__
-
-__Exploring Dynamic Pattern Adaptation__
-
-__Compressing Large Datasets of Biological Systems__
-
-![](img/Cellular%20Automata%20275.gif)
-
-__source: worldpress\.com__
-
-<span style="color:#FFFFFF"> __source: deepoceannews\.com__ </span>
-
-![](img/Cellular%20Automata%20276.jpg)
-
-![](img/Cellular%20Automata%20277.gif)
-
-![](img/Cellular%20Automata%20278.png)
-
-__source: __  __GeeksforGeeks__
-
-__source: Saponara et\. Al\. 2021__
-
-![](img/Cellular%20Automata%20279.png)
-
-# Thank You !Questions ?
-
+- G. Bard Ermentrout and Leah Edelstein-Keshet for their foundational work on Cellular Automata in biological modeling.
+- Other authors and researchers whose work has contributed to the project.

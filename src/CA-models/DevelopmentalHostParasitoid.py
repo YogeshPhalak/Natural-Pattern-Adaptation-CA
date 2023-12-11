@@ -55,7 +55,7 @@ if __name__ == '__main__':
     while True:
         x = step(x, stages_=stages, B_=b, F_=f)
         img = cv2.applyColorMap((x * 255 // stages).astype(np.uint8), cv2.COLORMAP_HOT)
-        img = cv2.resize(img, (1000, 1000), interpolation=cv2.INTER_LINEAR)
+        img = cv2.resize(img, (512, 512), interpolation=cv2.INTER_LINEAR)
         cv2.imshow('img', img)
         key = cv2.waitKey(1)
         if key == ord('q'):

@@ -67,8 +67,8 @@ if __name__ == '__main__':
         # print(f[0,0])
 
         img = cv2.applyColorMap((f * 255 // stages).astype(np.uint8), cv2.COLORMAP_JET)
-        img = cv2.resize(img, (1000, 1000), interpolation=cv2.INTER_NEAREST)
-        cv2.imshow("img", img)
+        img = cv2.resize(img, (512, 512), interpolation=cv2.INTER_NEAREST)
+        cv2.imshow("Fish-Shark Automata", img)
         key = cv2.waitKey(10)
         if key == ord('q'):
             break

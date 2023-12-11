@@ -55,12 +55,16 @@ if __name__ == '__main__':
 
     while True:
         x = step(x, stages_=stages)
-        img = cv2.applyColorMap((x * 255 // stages).astype(np.uint8), cv2.COLORMAP_JET)
-        img = cv2.resize(img, (1000, 1000), interpolation=cv2.INTER_LINEAR)
-        cv2.imshow('test', img.astype(np.uint8))
-        key = cv2.waitKey(100)
+        img = cv2.applyColorMap((x * 255 // stages).astype(np.uint8), cv2.COLORMAP_AUTUMN)
+        img = cv2.resize(img, (512, 512), interpolation=cv2.INTER_LINEAR)
+        cv2.imshow('spiral', img.astype(np.uint8))
+        key = cv2.waitKey(500)
         if key == ord('q'):
             break
+        elif key == ord('r'):
+            print('resetting')
+            x = np.zeros((n, m))
+            x = init_random(x, num_=1000, stages_=stages)
         elif key == ord('s'):
             print('saving')
             cv2.imwrite('ExcitableAutometaSprialPair' + str(np.random.randint(0, 1000)) + '.png', img)
