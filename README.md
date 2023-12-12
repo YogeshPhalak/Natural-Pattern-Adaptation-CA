@@ -1,4 +1,4 @@
-# Project Title
+# Natural Pattern Adaptation with Cellular Automata
 
 ## Overview
 
@@ -30,7 +30,7 @@ different aspects of biological phenomena.
 ## Introduction
 
 The paper chosen for study, "Cellular Automat Approaches to Biological Modeling" by G. Bard Ermentrout and Leah
-Edelstein-Keshet, serves as the foundation for this project. The goal is to extend the authors' work by incorporating
+Edelstein-Keshet serves as the foundation for this project. The goal is to extend the authors' work by incorporating
 pattern identification using convolution in image processing to understand the mechanism of pattern adaptation.
 
 ## Deterministic Automata
@@ -48,7 +48,7 @@ spatial patterns.
 
 ### Host-Parasite Model
 
-A host-parasitoid model is discretized and placed on a grid, resembling an active CA. The system exhibits dynamic
+A host-parasitoid model is discretized and placed on a grid, resembling an active CA. The system exhibits a dynamic
 interactions between host and parasite populations, leading to complex spatial patterns.
 
 <p align="center">
@@ -114,7 +114,7 @@ influence adaptive responses.
 
 ### Compressing Large Datasets of Biological Systems
 
-Utilizing the weight tensor as a convolution kernel to efficiently compress large datasets while preserving salient
+Utilizing the weight tensor as a convolution kernel to compress large datasets while preserving salient efficiently
 features.
 
 ## Usage
